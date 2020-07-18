@@ -54,7 +54,7 @@ class SinglyLinkedList{
     // nextVal is the node in the list that is getting removed
     // console.log(nextVal);
     // once the last node is found in the while loop; new tail is set to the second to last
-    // node; the last node's .next is null; and the length is decremented and
+    // node; the new tail node's .next is null; and the length is decremented and
     // return the value of the node that was removed
 
     currentVal.next = null;
