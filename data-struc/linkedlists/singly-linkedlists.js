@@ -91,6 +91,16 @@ class SinglyLinkedList{
     // return linked list
     return this;
   }
+  get(index){
+    if(index < 0 || index >= this.length) return null;
+    
+    let retrivedNode = this.head;
+    for(let i = 0; i < index; i++){
+      retrivedNode = retrivedNode.next;
+    }
+    return retrivedNode;
+    
+  }
 }
 
 // This code works but Nodes are used in the linked lists to hold the data; new Nodes hold the data and are able to hold a reference to the next node of data
@@ -102,6 +112,7 @@ class SinglyLinkedList{
 // console.log(first);
 
 var list = new SinglyLinkedList();
+// push node to end of list
 list.push("1");
 list.push("2");
 list.push("3");
@@ -109,9 +120,14 @@ list.push("4");
 list.push("5");
 list.push("6");
 console.log(list);
+// pop the last node in list
 list.pop();
 console.log(list);
+// get rid of the first node in list
 list.shift();
 console.log(list);
+// push node to beginning of the list
 list.unshift(1);
 console.log(list);
+// get retrieves the value at the 5th node \/; indeces start at 0 just like arrays
+console.log(list.get(4));
