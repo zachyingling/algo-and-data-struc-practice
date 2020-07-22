@@ -112,6 +112,26 @@ class SinglyLinkedList{
     changingNode.val = value;
     return true;
   }
+  insert(index, value){
+    // if indeces doesn't exist return false
+    if(index < 0 || index > this.length) return false;
+    // if you wanna insert at end use push function
+    // ! turns what is being returned to a boolean operator; so ! makes the returned function false; then !! turns the returned function true
+    if(index === this.length) return !!this.push(value);
+    // if you wanna insert at beginning use unshift
+    // ! turns what is being returned to a boolean operator; so ! makes the returned function false; then !! turns the returned function true
+    if(index === 0) return !!this.unshift(value);
+  
+    // firstNode is the index before you wanna insert; thirdNode is the index after you wanna insert
+    // now you point firstNode to new node created then point new node to thirdNode
+    let firstNode = this.get(index - 1);
+    let thirdNode = firstNode.next;
+    let middleNode = new Node(value);
+    middleNode.next = thirdNode;
+    firstNode.next = middleNode;
+    this.length++;
+    return true;
+  }
 }
 
 // This code works but Nodes are used in the linked lists to hold the data; new Nodes hold the data and are able to hold a reference to the next node of data
@@ -144,4 +164,6 @@ console.log(list);
 console.log(list.get(4));
 // set function sets the value of the node at the index you put in; returns true if set correctly; returns false if node wasn't found
 console.log(list.set(0, "first"));
+console.log(list);
+console.log(list.insert(1, "second"));
 console.log(list);
