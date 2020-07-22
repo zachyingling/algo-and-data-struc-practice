@@ -92,14 +92,25 @@ class SinglyLinkedList{
     return this;
   }
   get(index){
+    // if the index not in the indeces range return null
     if(index < 0 || index >= this.length) return null;
     
     let retrivedNode = this.head;
+    // make this for loop to go node to node till i matches index
     for(let i = 0; i < index; i++){
       retrivedNode = retrivedNode.next;
     }
+    // return node that you looked for in the loop
     return retrivedNode;
-    
+  }
+  set(index, value){
+    // use the get function above to find the node that you are looking for
+    let changingNode = this.get(index);
+    // if it isnt found return false
+    if(!changingNode) return false;
+    // change the node's val to the value in the parameter
+    changingNode.val = value;
+    return true;
   }
 }
 
@@ -129,5 +140,8 @@ console.log(list);
 // push node to beginning of the list
 list.unshift(1);
 console.log(list);
-// get retrieves the value at the 5th node \/; indeces start at 0 just like arrays
+// get function retrieves the value at the 5th node \/; indeces start at 0 just like arrays
 console.log(list.get(4));
+// set function sets the value of the node at the index you put in; returns true if set correctly; returns false if node wasn't found
+console.log(list.set(0, "first"));
+console.log(list);
