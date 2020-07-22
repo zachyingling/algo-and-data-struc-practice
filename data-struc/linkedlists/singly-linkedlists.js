@@ -64,14 +64,32 @@ class SinglyLinkedList{
     return nextVal;
   }
   shift(){
+    // if there isnt a head so no list return undefined
     if(!this.head) return undefined;
     let currentHead = this.head;
+    // Make the new head the node right after the head node
     this.head = currentHead.next;
     this.length--;
     if(this.length === 0){
       this.tail = null;
     }
+    // return the head being removed
     return currentHead;
+  }
+  unshift(val){
+    let tempNode = new Node(val);
+    // if there isnt a head set new node to be head and tail of list
+    if(!this.head){
+      this.head = tempNode;
+      this.tail = this.head;
+    } else {
+      // link the new node created to the old head; then set the new node to be the head
+      tempNode.next = this.head;
+      this.head = tempNode;
+    }
+    this.length++;
+    // return linked list
+    return this;
   }
 }
 
@@ -94,4 +112,6 @@ console.log(list);
 list.pop();
 console.log(list);
 list.shift();
+console.log(list);
+list.unshift(1);
 console.log(list);
