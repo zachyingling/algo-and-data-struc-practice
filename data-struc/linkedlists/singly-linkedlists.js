@@ -63,6 +63,16 @@ class SinglyLinkedList{
 
     return nextVal;
   }
+  shift(){
+    if(!this.head) return undefined;
+    let currentHead = this.head;
+    this.head = currentHead.next;
+    this.length--;
+    if(this.length === 0){
+      this.tail = null;
+    }
+    return currentHead;
+  }
 }
 
 // This code works but Nodes are used in the linked lists to hold the data; new Nodes hold the data and are able to hold a reference to the next node of data
@@ -82,4 +92,6 @@ list.push("5");
 list.push("6");
 console.log(list);
 list.pop();
+console.log(list);
+list.shift();
 console.log(list);
