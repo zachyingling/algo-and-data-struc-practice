@@ -150,6 +150,27 @@ class SinglyLinkedList{
       return nodeRemoved;
     }
   }
+  reverse(){
+    // switch the head and tail nodes
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    let prev = null;
+    let next;
+    // node variable is the node you are currently working with and prev/next are nodes to the left and right of the node you are working on
+    // to save them for next iteration
+    for(let i = 0; i < this.length; i++){
+      // save the next node for next iteration
+      next = node.next;
+      // point the current node to the one before it
+      node.next = prev;
+      // save the node you just worked on for next iteration
+      prev = node;
+      // save the next node you want to work on for next iteration
+      node = next;
+    }
+    return this;
+  }
 }
 
 // This code works but Nodes are used in the linked lists to hold the data; new Nodes hold the data and are able to hold a reference to the next node of data
@@ -189,4 +210,7 @@ console.log(list);
 // this function removes a certain node from the list and takes the index that you want removed
 console.log("removed node \\/");
 console.log(list.remove(1));
+console.log(list);
+// this function reverses the linked list by switching the head and tail and pointing the data in the linked list in the opposite direction
+list.reverse();
 console.log(list);
