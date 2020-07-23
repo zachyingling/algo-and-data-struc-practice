@@ -1,5 +1,5 @@
 // piece of data - val
-//reference to next node - next
+// reference to next node - next
 
 class Node{
   constructor(val){
@@ -8,6 +8,12 @@ class Node{
   }
 }
 
+// Insertion - SLL O(1) which is faster than array
+// Removal - SLL depends remove of beginning O(1) or end is O(n)
+// Searching - SLL O(n)
+// Access - SLL O(n) slower than array
+
+// Better at insertion and deletion compared to arrays
 class SinglyLinkedList{
   constructor(){
     this.head = null;
