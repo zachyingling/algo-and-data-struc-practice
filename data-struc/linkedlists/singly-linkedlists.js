@@ -132,6 +132,24 @@ class SinglyLinkedList{
     this.length++;
     return true;
   }
+  remove(index){
+    if(index < 0 || index >= this.length) return undefined;
+    else if(index === 0) {
+      // returns node removed
+      return this.shift();
+    } else if(index === this.length-1){
+      // returns node removed
+      return this.pop();
+    } else {
+
+      let nodeRemoved = this.get(index)
+      let firstNode = this.get(index - 1);
+      // point the node in front of the node getting removed to the node after the node getting removed
+      firstNode.next = nodeRemoved.next;
+      this.length--;
+      return nodeRemoved;
+    }
+  }
 }
 
 // This code works but Nodes are used in the linked lists to hold the data; new Nodes hold the data and are able to hold a reference to the next node of data
@@ -165,5 +183,10 @@ console.log(list.get(4));
 // set function sets the value of the node at the index you put in; returns true if set correctly; returns false if node wasn't found
 console.log(list.set(0, "first"));
 console.log(list);
+// insert function takes two arguments and first is index that the new node is going to be and second argument is the value of the new node
 console.log(list.insert(1, "second"));
+console.log(list);
+// this function removes a certain node from the list and takes the index that you want removed
+console.log("removed node \\/");
+console.log(list.remove(1));
 console.log(list);
