@@ -125,9 +125,9 @@ class DoublyLinkedList{
     // return false if index doesnt exist
     if(index < 0 || index > this.length) return false;
     // if the value wants inserted at beginning just use unshift method
-    else if(index === 0) this.unshift(val);
+    else if(index === 0) return !!this.unshift(val);
     // if the value wants inserted at the end just use push method
-    else if(index === this.length) this.push(val);
+    else if(index === this.length) return !!this.push(val);
     else {
       // create a new Node and use get method to find the node at the index before the index the new node will go
       let frontNode = this.get(index - 1);
@@ -142,8 +142,8 @@ class DoublyLinkedList{
       // in the unshift and push methods the length is already incremented in those methods so 
       // \/ keep this line here
       this.length++;
+      return true;
     }
-    return true;
   }
 }
 
