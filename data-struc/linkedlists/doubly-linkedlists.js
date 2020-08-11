@@ -113,6 +113,14 @@ class DoublyLinkedList{
     }
     return foundNode;
   }
+  set(index, val){
+    let foundNode = this.get(index);
+    if(!foundNode) return false;
+    else {
+      foundNode.val = val;
+      return true;
+    }
+  }
 }
 
 let dll = new DoublyLinkedList;
@@ -136,4 +144,6 @@ dll.push("fifth");
 console.log(dll);
 // returns the node at the 2nd index of the list
 console.log(dll.get(1));
-
+// sets the value of the 2nd index node to be value of '2nd'
+console.log(dll.set(1, "2nd"));
+console.log(dll);
