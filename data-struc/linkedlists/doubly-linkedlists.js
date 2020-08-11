@@ -46,6 +46,8 @@ class DoublyLinkedList{
     } else {
       // poppedValue is node getting popped
       poppedValue = this.tail;
+      // removing connections from any other node from the node getting returned
+      poppedValue.prev = null;
       // new tail is the node previous to the one getting popped
       this.tail = this.tail.prev;
       // before this line of code \/; the .next is still the node gettting popped
