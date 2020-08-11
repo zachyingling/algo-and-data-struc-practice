@@ -91,6 +91,28 @@ class DoublyLinkedList{
     this.length++;
     return this;
   }
+  get(index){
+    let foundNode, startingPoint;
+    // if the index doesnt exist return null
+    if(index < 0 || index >= this.length) return null;
+    // if index is at the first half of the list; start from the head
+    else if(index <= this.length / 2){
+      startingPoint = this.head;
+      for(let i = 0; i < index; i++){
+        startingPoint = startingPoint.next;
+      }
+      foundNode = startingPoint;
+    } 
+    // else if the index is in the second half of the list start from the tail
+    else {
+      startingPoint = this.tail;
+      for(let i = this.length - 1; i > index; i--){
+        startingPoint = startingPoint.prev;
+      }
+      foundNode = startingPoint
+    }
+    return foundNode;
+  }
 }
 
 let dll = new DoublyLinkedList;
@@ -109,3 +131,9 @@ console.log(dll);
 // adding a new element to the head or front of the list
 console.log(dll.unshift("actual first"));
 console.log(dll);
+dll.push("fourth");
+dll.push("fifth");
+console.log(dll);
+// returns the node at the 2nd index of the list
+console.log(dll.get(1));
+
