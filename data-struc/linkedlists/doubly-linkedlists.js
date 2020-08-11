@@ -37,19 +37,18 @@ class DoublyLinkedList{
   pop(){
     let poppedValue;
     // if the list is empty; else if length 1
-    if(!this.head){
-      return undefined;
-    } else if(this.length === 1){
+    if(!this.head) return undefined;
+    if(this.length === 1){
       poppedValue = this.head;
       this.head = null;
       this.tail = null;
     } else {
       // poppedValue is node getting popped
       poppedValue = this.tail;
-      // removing connections from any other node from the node getting returned
-      poppedValue.prev = null;
       // new tail is the node previous to the one getting popped
       this.tail = this.tail.prev;
+      // removing connections from any other node from the node getting returned
+      poppedValue.prev = null;
       // before this line of code \/; the .next is still the node gettting popped
       this.tail.next = null;
     }
@@ -58,13 +57,37 @@ class DoublyLinkedList{
     this.length--;
     return poppedValue;
   }
+  shift(){
+    // if length is 0
+    if(!this.head) return undefined;
+    // store the head before removed into a variable
+    let oldHead = this.head;
+    if(this.length === 1){
+      this.head = null;
+      this.tail = null;
+    } else {
+      // move the new head of the dll to the head node's .next
+      let newHead = this.head.next;
+      newHead.prev = null;
+      this.head = newHead;
+    }
+    // cut the bonds on the head you are returning to only return one node
+    oldHead.next = null;
+    this.length--;
+    return oldHead;
+  }
 }
 
 let dll = new DoublyLinkedList;
+// pushing value to end of the dll
 dll.push("first");
 dll.push("second");
 dll.push("third");
 console.log(dll);
 dll.push("fourth");
+// removing last element in dll
 console.log(dll.pop());
+console.log(dll);
+// removing first element in dll
+console.log(dll.shift());
 console.log(dll);
