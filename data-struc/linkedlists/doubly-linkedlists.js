@@ -145,6 +145,29 @@ class DoublyLinkedList{
       return true;
     }
   }
+  remove(index){
+    // if index doesn't exist
+    if(index < 0 || index >= this.length) return undefined;
+    // if first index wants removed use shift method
+    else if(index === 0) return this.shift();
+    // if the last index wants removed use pop method
+    else if(index === this.length - 1) return this.pop();
+    else {
+      // find node needing removed
+      let removedNode = this.get(index);
+      let frontNode = removedNode.prev;
+      let backNode = removedNode.next;
+      // redirect the connections in the linked list
+      frontNode.next = backNode;
+      backNode.prev = frontNode;
+    
+      // remove all connections from the node being removed
+      removedNode.next = null;
+      removedNode.prev = null;
+      this.length--;
+      return removedNode;
+    }
+  }
 }
 
 let dll = new DoublyLinkedList;
@@ -173,4 +196,9 @@ console.log(dll.set(1, "2nd"));
 console.log(dll);
 // inserts node with val of '4th' at the 4th spot in the list
 console.log(dll.insert(3, "actual 4th"));
+console.log(dll);
+console.log(dll.insert(0, "1st"));
+console.log(dll);
+// removes node at the second spot or the 1 index
+console.log(dll.remove(1));
 console.log(dll);
