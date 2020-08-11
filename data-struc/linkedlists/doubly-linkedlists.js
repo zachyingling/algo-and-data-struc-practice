@@ -121,6 +121,30 @@ class DoublyLinkedList{
       return true;
     }
   }
+  insert(index, val){
+    // return false if index doesnt exist
+    if(index < 0 || index > this.length) return false;
+    // if the value wants inserted at beginning just use unshift method
+    else if(index === 0) this.unshift(val);
+    // if the value wants inserted at the end just use push method
+    else if(index === this.length) this.push(val);
+    else {
+      // create a new Node and use get method to find the node at the index before the index the new node will go
+      let frontNode = this.get(index - 1);
+      let backNode = frontNode.next;
+      let newNode = new Node(val);
+      // connect front node to new node and back node to new node
+      frontNode.next = newNode;
+      backNode.prev = newNode;
+      // connect newNode to both of the nodes before and after it to keep the list linked
+      newNode.prev = frontNode;
+      newNode.next = backNode;
+      // in the unshift and push methods the length is already incremented in those methods so 
+      // \/ keep this line here
+      this.length++;
+    }
+    return true;
+  }
 }
 
 let dll = new DoublyLinkedList;
@@ -142,8 +166,11 @@ console.log(dll);
 dll.push("fourth");
 dll.push("fifth");
 console.log(dll);
-// returns the node at the 2nd index of the list
+// returns the node at the 2nd spot of the list
 console.log(dll.get(1));
-// sets the value of the 2nd index node to be value of '2nd'
+// sets the value of the 2nd spot node to be value of '2nd'
 console.log(dll.set(1, "2nd"));
+console.log(dll);
+// inserts node with val of '4th' at the 4th spot in the list
+console.log(dll.insert(3, "actual 4th"));
 console.log(dll);
