@@ -76,6 +76,21 @@ class DoublyLinkedList{
     this.length--;
     return oldHead;
   }
+  unshift(val){
+    let newNode = new Node(val);
+    // if this newNode is going to be the only node in the list
+    if(!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      // point current head's .prev to be newNode; point newNode's .next to be current head; set new head to be newNode
+      newNode.next = this.head;
+      this.head.prev = newNode;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 let dll = new DoublyLinkedList;
@@ -90,4 +105,7 @@ console.log(dll.pop());
 console.log(dll);
 // removing first element in dll
 console.log(dll.shift());
+console.log(dll);
+// adding a new element to the head or front of the list
+console.log(dll.unshift("actual first"));
 console.log(dll);
