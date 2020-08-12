@@ -1,6 +1,17 @@
 // Just like SLL but with DLL it can refer to the next val and prev val
 // Takes more memory than the SLL; but with more memory usage leaves more flexibility
 
+// Big O - Time Complexity
+// Insertion O(1) 
+// Removal O(1) better than sll whenever removing from the end
+// Searching O(N)
+// Access O(N)
+
+// Identical to SLL except there is a .prev pointer to point to previous nodes; makes some tasks easier
+
+// Better than SLL at finding nodes because with connections both ways search can be done in half of the time as SLL
+// but takes up more memory because of extra pointer
+
 class Node {
   constructor(val){
     this.val = val;
@@ -168,6 +179,26 @@ class DoublyLinkedList{
       return removedNode;
     }
   }
+  reverse(){
+    let temp = null;
+    let current = this.head;
+
+    // swap next and prev for all nodes of doubly linked list
+    while(current != null) {
+      temp = current.prev;
+      current.prev = current.next;
+      current.next = temp;
+      current = current.prev;
+    }
+
+    // Before changing head and tail, check for the cases like empty list and list with only one node
+    if(temp != null) {
+      this.tail = this.head;
+      this.head = temp.prev;
+    }
+
+    return this;
+  }
 }
 
 let dll = new DoublyLinkedList;
@@ -202,3 +233,5 @@ console.log(dll);
 // removes node at the second spot or the 1 index
 console.log(dll.remove(1));
 console.log(dll);
+// reverse every element in the list
+console.log(dll.reverse());
