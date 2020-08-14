@@ -1,4 +1,4 @@
-// factorial =   [5!] === 5 * 4 * 3 * 2 * 2
+// factorial =   5! === 5 * 4 * 3 * 2 * 2
 
 // iterative function for factorial
 function iterativeFactorial(num) {
