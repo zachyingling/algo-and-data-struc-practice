@@ -1,5 +1,7 @@
+// First recursive function in course
 // Recursive Version
 function countDown(num){
+  // base case exit out of the recursion
   if(num <= 0) {
       console.log("All done!");
       return;
