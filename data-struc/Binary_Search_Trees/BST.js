@@ -6,6 +6,10 @@ class Node {
     }
 }
 
+// Big O of Binary Search Tree
+// Insertion - O(log n) - Average
+// Searching - O(log n) - Average
+
 class BinarySearchTree {
     constructor(){
         this.root = null;
@@ -48,34 +52,47 @@ class BinarySearchTree {
         }
     }
     find(value){
+        // if the tree is empty
         if(this.root === null) return false;
+        // current will get updated after each iteration and found in the flag variable
         var current = this.root,
             found = false;
+        // while there is a current and found is false
         while(current && !found){
             if(value < current.value){
+                // update current to the left side of the current node
                 current = current.left;
             } else if(value > current.value){
+                // update current to the right side of the current node
                 current = current.right;
             } else {
+                // change flag variable to true
                 found = true;
             }
         }
+        // if found stayed false; return undefined
         if(!found) return undefined;
         return current;
     }
     contains(value){
+        // if tree is empty
         if(this.root === null) return false;
         var current = this.root,
             found = false;
+        // while there is a current and found is false
         while(current && !found){
             if(value < current.value){
+                // update current to the left side of the current node
                 current = current.left;
             } else if(value > current.value){
+                // update current to the right side of the current node
                 current = current.right;
             } else {
+                // return true out of the method
                 return true;
             }
         }
+        // if nothing else was returned return false because the value wasnt found
         return false;
     }
 }
