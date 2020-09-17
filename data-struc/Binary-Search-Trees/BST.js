@@ -143,6 +143,28 @@ class BinarySearchTree {
 
         return data;
     }
+    // Depth First Search
+    // Post Order
+    // Just like Pre Order where it goes to the depth of the tree on the left side first
+    // But the root is the last thing visited
+    // This traversal explores all children nodes before it visits each node's parents
+    DFSPostOrder(){
+        let data = [];
+        let current = this.root;
+
+        // Helper Function
+        // Recursively push the value of the node to the data array
+        // This helper function adds traverse function calls to the callstack
+        // It calls each node down the left side first then it makes its way over to the right side
+        function traverse(node){
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+            data.push(node.value);
+        }
+        traverse(current);
+
+        return data;
+    }
 }
 
 // Insert Structure
@@ -160,3 +182,4 @@ tree.insert(16);
 tree.insert(7);
 console.log(tree.BFS());
 console.log(tree.DFSPreOrder());
+console.log(tree.DFSPostOrder());
