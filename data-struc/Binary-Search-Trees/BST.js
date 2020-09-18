@@ -165,12 +165,50 @@ class BinarySearchTree {
 
         return data;
     }
+    // Depth First Search
+    // In Order
+    // This traversal will be in numerical order
+    // So, it will return an array of the numbers in array
+    // Does that by traversing the whole left side of the tree first
+    // Then the root
+    // Then the right of the tree
+    DFSInOrder(){
+        let data = [];
+        let current = this.root;
+
+        // Helper Function
+        // Recursively push the value of the node to the data array
+        // This helper function adds traverse function calls to the callstack
+        // It calls each node down the left side first then it makes its way over to the right side
+        function traverse(node){
+            if(node.left) traverse(node.left);
+            data.push(node.value);
+            if(node.right) traverse(node.right);
+        }
+        traverse(current);
+
+        return data;
+    }
 }
 
 // Insert Structure
 //      10
 //   5     13
 // 2  7  11  16
+
+// Breadth First Search vs Depth First Search
+// Time Complexity - Same for each
+// Breadth first on a super wide tree takes up alot of space
+// Breadth first adds more recursive calls to the call stack with a super width tree
+// compared to the Depth First Search
+// Summary
+// In wider trees depth first search(DFS) uses less space
+// In trees that are alot longer than wide breadth first search(BFS) uses less space
+
+// DFS PreOrder vs. PostOrder vs. InOrder
+// Pre Order - Can be used to "export" a tree structure so that it is easily reconstructed or copied
+// Post Order - Used to get the left side values first, then right side, then root of the tree
+// In Order - Used commonly; returned array will have the values in order
 
 var tree = new BinarySearchTree();
 tree.insert(10);
@@ -180,6 +218,11 @@ tree.insert(11);
 tree.insert(2);
 tree.insert(16);
 tree.insert(7);
+console.log("BFS");
 console.log(tree.BFS());
+console.log("DFS Pre Order");
 console.log(tree.DFSPreOrder());
+console.log("DFS Post Order");
 console.log(tree.DFSPostOrder());
+console.log("DFS In Order");
+console.log(tree.DFSInOrder());
