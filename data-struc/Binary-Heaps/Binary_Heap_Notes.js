@@ -13,3 +13,8 @@
 
 // Important becuase Binary Heaps are used to implement Priority Queues, which are very commonly used data structures
 // Aswell as with graph traversal algorithms
+
+// Big O
+// Insertion - O(log n)
+// Removal - O(log n)
+// Searching - O(n)
