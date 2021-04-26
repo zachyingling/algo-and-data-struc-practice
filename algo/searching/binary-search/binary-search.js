@@ -63,9 +63,11 @@ let statesOrganized = ["Alaska",
 function binarySearch(arr, val) {
   let leftPointer = 0;
   let rightPointer = arr.length - 1;
-  let flag = false
+  let flag = false;
 
-  // eventually the while loop will complete no matter what; either the index of the value will be returned; if not the left pointer will equal the right pointer
+  // eventually the while loop will complete no matter what; either the index of
+  // the value will be returned; if not the left pointer will equal the right
+  // pointer
   while(leftPointer <= rightPointer){
     let middlePointer = Math.trunc((leftPointer + rightPointer) / 2);
     if(arr[middlePointer] === val){
@@ -75,7 +77,6 @@ function binarySearch(arr, val) {
     } else {
       rightPointer = middlePointer - 1;
     }
-    debugger;
   }
   return -1;
 }
