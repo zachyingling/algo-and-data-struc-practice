@@ -15,6 +15,7 @@ function insertionSort(arr){
     for(j = i - 1; j >= 0 && arr[j] > currentVal; j--){
       // this will put currentVal in the position that makes the number sorted
       arr[j+1] = arr[j];
+      debugger;
     }
     // Make currentVal the index that got moved
     arr[j + 1] = currentVal;
@@ -22,6 +23,6 @@ function insertionSort(arr){
   return arr;
 }
 
-let array = [2, 1, 5, 6, 3, 5];
+let array = [2, 3, 1, 5, 6, 3, 5];
 
 console.log(insertionSort(array));
