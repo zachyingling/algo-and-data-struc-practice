@@ -218,6 +218,7 @@ tree.insert(11);
 tree.insert(2);
 tree.insert(16);
 tree.insert(7);
+console.log(tree);
 console.log("BFS");
 console.log(tree.BFS());
 console.log("DFS Pre Order");
